@@ -171,7 +171,7 @@ export const getters: GetterTree<CheckoutState, RootState> = {
         const taxAmount = getTaxAmount(totals.shipping_incl_tax, shippingTaxRate)
         checkoutOrder.order_lines.push({
           type: 'shipping_fee',
-          reference: code,
+          reference: `${shippingMethod.carrier_code}_${shippingMethod.method_code}`,
           quantity: 1,
           name: `${shippingMethod.carrier_title} (${shippingMethod.method_title})`,
           total_amount: price ? price * 100 : 0,
